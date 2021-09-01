@@ -1,0 +1,8 @@
+name: Retranslation-Plugin
+version: '${version}'
+main: net.kunmc.lab.retranslation.RetranslationPlugin
+api-version: 1.16
+authors: [ Yu_212 ]
+permissions:
+  retranslation.configcommand:
+    default: op
