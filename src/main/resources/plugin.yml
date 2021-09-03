@@ -6,3 +6,5 @@ authors: [ Yu_212 ]
 permissions:
   retranslation.configcommand:
     default: op
+  retranslation.relaycommand:
+    default: op

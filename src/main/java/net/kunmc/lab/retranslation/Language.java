@@ -1,7 +1,6 @@
 package net.kunmc.lab.retranslation;
 
 public enum Language {
-    AUTO("", "自動検出"),
     IS("is", "アイスランド語"),
     GA("ga", "アイルランド語"),
     AZ("az", "アゼルバイジャン語"),

@@ -18,7 +18,7 @@ public class ChatListener implements Listener {
         String content = ((TextComponent)event.message()).content();
         String retranslated;
         try {
-            retranslated = Retranslation.retranslate(content);
+            retranslated = Retranslation.retranslate(content, configManager.getRelays().toArray(new String[0]));
         } catch (Exception e) {
             e.printStackTrace();
             retranslated = configManager.getErrorText();

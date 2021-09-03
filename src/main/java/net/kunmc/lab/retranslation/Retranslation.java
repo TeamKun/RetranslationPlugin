@@ -16,13 +16,12 @@ import java.nio.charset.StandardCharsets;
 public class Retranslation {
     private static final String TRANSLATE_API_URL = "https://script.google.com/macros/s/{url}/exec?text={text}&relays={relays}";
 
-    public static String retranslate(String text) throws IOException {
+    public static String retranslate(String text, String[] relays) throws IOException {
         ConfigManager configManager = RetranslationPlugin.getInstance().getConfigManager();
-        String relays = String.join("/", configManager.getRelays()) + "/ja";
         String url = TRANSLATE_API_URL
                 .replace("{url}", configManager.getDeployId())
                 .replace("{text}", URLEncoder.encode(text, StandardCharsets.UTF_8.name()))
-                .replace("{relays}", relays);
+                .replace("{relays}", String.join("/", relays) + "/ja");
         CloseableHttpResponse response = HttpClients.createDefault().execute(new HttpGet(url));
         if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
             throw new IOException(response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase());

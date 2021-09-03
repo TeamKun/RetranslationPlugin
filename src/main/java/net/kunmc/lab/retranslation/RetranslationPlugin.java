@@ -19,6 +19,7 @@ public final class RetranslationPlugin extends JavaPlugin {
         configManager.load();
         CommandDispatcher<CommandListenerWrapper> dispatcher = ((CraftServer)Bukkit.getServer()).getServer().vanillaCommandDispatcher.a();
         ConfigCommand.register(dispatcher);
+        RelayCommand.register(dispatcher);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
     }
 
