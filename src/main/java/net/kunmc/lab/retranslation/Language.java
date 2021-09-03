@@ -1,4 +1,4 @@
-package net.kunmc.lab.retranslation.translate;
+package net.kunmc.lab.retranslation;
 
 public enum Language {
     AUTO("", "自動検出"),

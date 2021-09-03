@@ -1,4 +1,6 @@
-deployId: AKfycbxspMbx6TyqHf1RqOmXHOuJpOJcISKxpq9RE-Pn5LLKJlOTPHRHVqN_QI9muQe1JQNh
+deployId:
+errorText: §cエラーが発生しました
 enabled: true
+showOriginal: true
 relays:
   - en

@@ -1,9 +1,10 @@
 package net.kunmc.lab.retranslation.config;
 
 import net.kunmc.lab.retranslation.RetranslationPlugin;
-import net.kunmc.lab.retranslation.config.parser.*;
 import net.kunmc.lab.retranslation.config.parser.BooleanParser;
 import net.kunmc.lab.retranslation.config.parser.Parser;
+import net.kunmc.lab.retranslation.config.parser.StringListParser;
+import net.kunmc.lab.retranslation.config.parser.StringParser;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;
@@ -13,6 +14,8 @@ import java.util.Map;
 public class ConfigManager {
     private static final Map<String, Parser<?>> CONFIGS = new HashMap<>() {{
         put("deployId", new StringParser());
+        put("errorText", new StringParser());
+        put("showOriginal", new BooleanParser());
         put("enabled", new BooleanParser());
         put("relays", new StringListParser());
     }};
@@ -50,8 +53,20 @@ public class ConfigManager {
         return true;
     }
 
+    public String get(String path) {
+        return String.valueOf(config.get(path));
+    }
+
     public String getDeployId() {
         return config.getString("deployId");
+    }
+
+    public String getErrorText() {
+        return config.getString("errorText");
+    }
+
+    public boolean showOriginal() {
+        return config.getBoolean("showOriginal");
     }
 
     public boolean isEnabled() {

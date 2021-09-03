@@ -21,8 +21,21 @@ public class ConfigCommand {
                     .then(net.minecraft.server.v1_16_R3.CommandDispatcher.a("value", StringArgumentType.greedyString())
                     .executes(context -> set(context, path))));
         }
+        LiteralArgumentBuilder<CommandListenerWrapper> getBuilder = net.minecraft.server.v1_16_R3.CommandDispatcher.a("get");
+        for (String path : ConfigManager.getConfigPaths()) {
+            getBuilder.then(net.minecraft.server.v1_16_R3.CommandDispatcher.a(path)
+                    .executes(context -> get(context, path)));
+        }
         builder.then(setBuilder);
+        builder.then(getBuilder);
         dispatcher.register(builder);
+    }
+
+    private static int get(CommandContext<CommandListenerWrapper> context, String path) {
+        ConfigManager configManager = RetranslationPlugin.getInstance().getConfigManager();
+        String value = configManager.get(path);
+        context.getSource().sendMessage(new ChatComponentText(value), false);
+        return 0;
     }
 
     private static int set(CommandContext<CommandListenerWrapper> context, String path) {
